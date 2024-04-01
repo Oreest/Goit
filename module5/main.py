@@ -1,6 +1,7 @@
 import argparse
 import asyncio
 import logging
+import platform
 from datetime import datetime, timedelta
 
 import aiohttp
@@ -29,9 +30,9 @@ async def get_currency_request(url):
         return None
 
 
-async def get_currency(days):
+async def get_currency(days=0):
     dates = [(datetime.now() - timedelta(days=x)).strftime('%d.%m.%Y') for x in range(days + 1)]
-    print(dates)
+    # print(dates)
     exchange_rate_data = [get_currency_request(f'{URL_PB}&date={date}') for date in dates]
     results = await asyncio.gather(*exchange_rate_data)
     for result in results:
@@ -49,7 +50,7 @@ def parse_currency(exchange_rate):
 
 async def main():
     args = command_parser()
-    print(args)
+    # print(args)
     number_of_days = int(args.get('days'))
     if number_of_days > 10:
         print('The date range must be less than or equal to 10 days')
@@ -58,4 +59,7 @@ async def main():
 
 
 if __name__ == '__main__':
+    if platform.system() == 'Windows':
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
     asyncio.run(main())
