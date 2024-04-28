@@ -5,7 +5,7 @@ from scrapy.crawler import CrawlerProcess
 class QuotesSpider(scrapy.Spider):
     name = "quotes"
     custom_settings = {
-        "FEEDS": {"quotes.json": {"format": "json", "encoding": "utf-8"}},
+        "FEEDS": {"quotes.json": {"format": "json", "encoding": "utf-8", "indent": 4}},
         "REQUEST_FINGERPRINTER_IMPLEMENTATION": "2.7"
     }
 
@@ -31,7 +31,7 @@ class QuotesSpider(scrapy.Spider):
 class AuthorsSpider(scrapy.Spider):
     name = "authors"
     custom_settings = {
-        "FEEDS": {"authors.json": {"format": "json", "encoding": "utf-8"}},
+        "FEEDS": {"authors.json": {"format": "json", "encoding": "utf-8", "indent": 4}},
         "REQUEST_FINGERPRINTER_IMPLEMENTATION": "2.7"
     }
 
