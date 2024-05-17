@@ -7,13 +7,11 @@ from .models import Author, Quote, Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-# Create your views here.
 def index(request):
     Q = Quote.objects.all()
     for quote in Q:
         quote_tags = Tag.objects.filter(quote=quote)
         quote.tags.set(quote_tags)
-        # print(quote.tags)
 
     per_page = 10
     paginator = Paginator(list(Q), per_page)

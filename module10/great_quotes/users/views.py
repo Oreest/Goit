@@ -10,7 +10,7 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('index')  # Redirect to the quotes list or another page after signup
+            return redirect('index')  # Redirect to the index page after login
     else:
         form = SignUpForm()
     return render(request, 'user/signup.html', {'form': form})
@@ -22,7 +22,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('index')  # Redirect to the quotes list or another page after login
+            return redirect('index')  # Redirect to the index page after login
     else:
         form = AuthenticationForm()
     return render(request, 'user/login.html', {'form': form})

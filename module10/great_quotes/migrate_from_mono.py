@@ -17,9 +17,9 @@ uri = f"mongodb+srv://{user}:{password}@cluster0.ybyottf.mongodb.net/?retryWrite
 # CONNECTION = connect(host=uri, tlsCAFile=certifi.where(), ssl=True)
 client = MongoClient(uri, tlsCAFile=certifi.where(), ssl=True)
 
-db = client['test']  # Replace 'your_database' with the name of your MongoDB database
+db = client['test']  # name of MongoDB database
 
-collection = db['author']  # Replace 'your_collection' with the name of your MongoDB collection
+collection = db['author']  # the name of MongoDB collection
 
 cursor = collection.find()
 
@@ -58,5 +58,4 @@ for quote in quotes:
         for tag in tags:
             print(tags)
             q.tags.add(tag)
-# Close the connection
 client.close()
