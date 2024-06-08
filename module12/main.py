@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import text
 
 from app.database.db import get_db
-from app.routes import contacts
+from app.routes import contacts, auth
 
 
 app = FastAPI()
@@ -29,7 +29,6 @@ async def root():
 @app.get("/api/healthchecker")
 def healthchecker(db: Session = Depends(get_db)):
     try:
-        # Make request
         result = db.execute(text("SELECT 1")).fetchone()
         if result is None:
             raise HTTPException(status_code=500, detail="Database is not configured correctly")
@@ -40,3 +39,4 @@ def healthchecker(db: Session = Depends(get_db)):
 
 
 app.include_router(contacts.router, prefix='/api')
+app.include_router(auth.router, prefix='/api')
