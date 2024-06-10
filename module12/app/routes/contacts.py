@@ -57,7 +57,7 @@ async def delete_contact(contact_id: int = Path(ge=1), db: Session = Depends(get
 
 @router.get("/birthdays/", response_model=List[ContactResponse])
 async def find_contacts_birthday(db: Session = Depends(get_db),
-                            current_user: User = Depends(auth_service.get_current_user)):
+                                 current_user: User = Depends(auth_service.get_current_user)):
     contacts = await repository_contacts.find_contacts_birthday(db)
     if contacts is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not Found")

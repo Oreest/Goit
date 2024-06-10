@@ -1,6 +1,5 @@
 from datetime import date, timedelta, datetime
 
-from sqlalchemy import and_, extract
 from sqlalchemy.orm import Session
 
 from app.database.models import Contact

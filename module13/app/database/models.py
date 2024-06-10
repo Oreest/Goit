@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, func
+from sqlalchemy import Column, Integer, String, DateTime, func, Boolean, LargeBinary
 from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
@@ -23,3 +23,6 @@ class User(Base):
     email = Column(String(150), nullable=False, unique=True)
     password = Column(String(255), nullable=False)
     refresh_token = Column(String(255), nullable=True)
+    avatar = Column(String(255), nullable=True)
+    avatarBinary = Column(LargeBinary, nullable=True)
+    confirmed_email = Column(Boolean, default=False)
