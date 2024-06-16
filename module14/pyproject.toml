@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "contacts app m14"
+version = "0.014"
+description = "REST API app to manage contacts"
+authors = ["Orest <lav.orest@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+sphinx = "^7.3.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
